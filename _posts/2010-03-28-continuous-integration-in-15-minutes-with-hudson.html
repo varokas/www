@@ -1,0 +1,64 @@
+---
+layout: post
+title: Continuous Integration in 15 Minutes with Hudson
+date: 2010-03-28 13:43:49.000000000 +07:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Software Engineering
+tags: []
+meta:
+  _edit_last: '12346080'
+  _wpas_done_fb: '1'
+  _wpas_done_twitter: '1'
+author:
+  login: varokas
+  email: varokas@panusuwan.com
+  display_name: varokas
+  first_name: ''
+  last_name: ''
+---
+<p>My motto: If something goes wrong, I want to know it now. <a href="http://martinfowler.com/articles/continuousIntegration.html" target="_blank">Continuous Integration</a> is always one of the most useful Agile practice I adore. It remove the phrase "But it was working on my machine .. yesterday!" out of the equation by putting a central environment that the build must run on. Most people might be more familiar with <a href="http://cruisecontrol.sourceforge.net/" target="_blank">Cruisecontrol</a>, but the lack of snappy setup and configuration for newbies is one of the big downsides it has. I was just introduced to <a href="http://hudson-ci.org/" target="_blank">Hudson</a> recently and really likes the simplicity it offers. I recommend this to teams that start using CI, because it is really easy to set up.</p>
+<h3>CI Basics</h3>
+<p>First, let me talk real quick about CI, to summarize its benefits and allow us to see how Hudson comes to play with that. Continuous Integrations in the wild usually follow these steps.</p>
+<ol>
+<li>One of the Developers in the team checks in code to a code repository (SVN, Mercurial, etc).</li>
+<li>Hudson sees that there's a new code and checks out the code in its own workspace</li>
+<li>Hudson run the build script (usually <a href="http://ant.apache.org/" target="_blank">Ant</a>, or the increasingly popular <a href="http://maven.apache.org/" target="_blank">Maven</a>) that is checked in the code. The build script usually follow these steps ( I will surely blog more about this later ).
+<ol>
+<li>Checking</li>
+<li>DB</li>
+<li>Generating code</li>
+<li>Compile</li>
+<li>Run automated test</li>
+<li>Run code analyzer tool (Static Analysis, Code Metrics , Test Coverage)</li>
+<li>Deploy the compiled code on test server</li>
+</ol>
+</li>
+<li>Hudson gather build results and compile a report (compile pass/failed, number of test passed/failed)</li>
+<li>Hudson publish a report on the website, and send out (emails/rss/twitter) to the developer that breaks the build</li>
+<li>The developer has to take responsibility to fix the error and commit in the fix</li>
+</ol>
+<h3>Installing Hudson</h3>
+<ol>
+<li>Hudson is distributed a form of (.war) file. Download the latest one from their <a href="https://hudson.dev.java.net/" target="_blank">website</a>.</li>
+<li>Prepare any Java Servlet container. <a href="http://tomcat.apache.org/download-60.cgi" target="_blank">Tomcat</a>, would do. For windows, I suggest installing it as a service.</li>
+<li>Use Tomcat Manager to upload and deploy hudson.war</li>
+<li>Goto http://localhost:8080/hudson</li>
+<li>On the left menu, goto "Manage Hudson", then "Configure System". Enter email server information</li>
+</ol>
+<h3>Configuring the build</h3>
+<ol>
+<li>Each build project is called jobs. There's a link to create one once you browse to hudson, click on it.</li>
+<li>Enter the job name. Choose "Build a free-style software project<strong>".</strong></li>
+<li>In Source code Management section, choose the one you use. Provide the path to your project source repository.</li>
+<li>In Build Triggers, select how often we want Hudson to grab the source code. In regular standalone projects, we usually do it every time a developer checks in code ("Poll SCM"). The parameter is a schedule in cron format. Every fifteen minutes ( */15 * * * *) should suffice for most projects. Note that this does not mean that we will build every 15 minutes, it means that Hudson will be checking for changes in the SVN every 15 minutes.</li>
+<li>In build section, select add build step. Choose "Invoke Ant" and provide the target name. If the build.xml is not at the root of the repository, choose "Advanced..." and provide the ant file path.</li>
+<li>In Post build actions, select Email notification and enter a list of everybody in your team. This will make Hudson send out an email to everybody when there's a build broken.</li>
+</ol>
+<h3>Establishing Fix-the-Build Culture</h3>
+<p>This is probably the most important thing you need to do, even more important than the tool itself. This is when you get team members together. Introduce their new neighbor, the build server. Then establishing the team rule of "You break the build, you fix the build". This does not mean that the junior member will be entirely on their own when problems arise. But he needs to be responsible for grabbing the right people when something happens and everybody is accountable for their commits.</p>
+<p>Making such rule would ensure that you would have the near-shippable quality product every day. Well... something that compiles and automatically tested at least :-).</p>

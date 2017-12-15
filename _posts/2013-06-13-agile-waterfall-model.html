@@ -1,0 +1,55 @@
+---
+layout: post
+title: An Agile development model called "Waterfall"
+date: 2013-06-13 21:36:28.000000000 +07:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- Software Engineering
+tags: []
+meta:
+  _edit_last: '12346080'
+  publicize_reach: a:2:{s:7:"twitter";a:1:{i:328171;i:70;}s:2:"wp";a:1:{i:0;i:9;}}
+  _wpas_done_328171: '1'
+  publicize_twitter_user: varokas
+  _publicize_done_external: a:1:{s:7:"twitter";a:1:{i:14437560;b:1;}}
+author:
+  login: varokas
+  email: varokas@panusuwan.com
+  display_name: varokas
+  first_name: ''
+  last_name: ''
+---
+<p>วันนี้ขอเสนอโมเดลการพัฒนาซอฟแวร์แบบอไจล์ครับ ชื่อว่า "Waterfall" เปรียบได้เหมือนกับการไหลของน้ำตกจาก Requirement ไปจนถึง Deploy</p>
+<p>ถ้าวาดเอาง่ายๆ ก็เป็นดังรูปข้างล่าง</p>
+<p><a href="http://varokas.files.wordpress.com/2013/06/untitled-diagram-3.png"><img class="alignnone size-medium wp-image-268" alt="Untitled Diagram (3)" src="{{ site.baseurl }}/assets/untitled-diagram-3.png?w=293" width="293" height="300" /></a></p>
+<h3><strong>ขั้นตอน</strong></h3>
+<ol>
+<li><strong>Requirement</strong> : ในขั้นนี้เราก็เอา User Story มาอันนึง แล้วก็คุยกับลูกค้าให้พอเข้าใจว่าจะสร้างมันยังไง</li>
+<li><strong>Design</strong> : เสร็จแล้วก็คุยกับเพื่อนร่วมทีมคร่าวๆ ว่าจะโค้ดยังไง มีอะไรที่ต้องเขียนที่มีการออกแบบต่างจากปกติรึเปล่า?</li>
+<li><strong>Code</strong>: ลงมือเขียนโค้ด ถ้ามี QA และก็อาจจะเขียน test case ไปพร้อมๆ กัน</li>
+<li><strong>Test</strong>: รันเทส ถ้ามันไม่ผ่านก็กลับไปแก้โค้ดให้ผ่าน</li>
+<li><strong>Deploy</strong>: ถ้างานเสร็จ ก็เอาไปดีพลอยซักที่ให้ลูกค้าดู​ ถ้าลูกค้าชอบ เกิดประโยชน์ ก็เอามันไปโยนใส่ production</li>
+</ol>
+<h3><strong>Waterfail?</strong></h3>
+<p>อ้าว แล้วแบบนี้มันต่างกับไอ้ที่เราเคยทำกันตรงไหนล่ะ? เราไม่ได้พยายามดิ้นรนหนีออกมาจากสิ่งนี้อยู่หรอ?</p>
+<p>จริงๆ แล้วเวลาเราพูดถึง Waterfall เรามักจะเหมารวมกันถึงสองเรื่อง</p>
+<ol>
+<li>กระบวนการ จาก Req -&gt; Design -&gt; Code -&gt; Test -&gt; Deploy</li>
+<li>การที่เราต้องที Req ทั้งระบบ จากนั้นก็ไป Design ทั้งระบบ Code ทั้งระบบ Test ทั้งหมด แล้วก็ Deploy ก้อนใหญ่ๆ</li>
+</ol>
+<p>สิ่งที่เราพยายามหนีออกมาจาก "Waterfall" ที่พูดๆ กัน ไม่ใช่ขั้นตอนกระบวนการทำงานจาก Req -&gt; Deploy ในข้อที่หนึ่งหรอกครับ แต่คือ<span style="line-height:1.7;">การที่เราต้องไปจมอยู่กับแต่ละกล่องเป็นเวลานานๆ วันๆ ก็นั่งเขียนแต่ Requirement ไปเรื่อยๆ คุยกันจนได้ครบ แล้วก็เข้าไปขั้น Design เสียเวลาอีกนานๆ แล้วก็ลงไปทำขั้นถัดไปๆ เรื่อยๆ </span></p>
+<p><span style="line-height:1.7;">จนมาวันหนึ่ง test จบ เอามันไปให้ลูกค้าได้ดู ก็จะได้รายการบ่นจากลูกค้ามาชุดใหญ่ๆ ไปให้แก้ (ก็เพราะเราให้เค้าดูทีละเยอะๆ เองนิ ช่วยไม่ได้)</span></p>
+<p>Waterfail ที่ชอบพูดกันด้วยอารมณ์สิ้นหวัง จริงๆ แล้วก็คือแค่การล้มเหลวในการสร้าง "ความพึงพอใจของลูกค้าที่มีต่อการส่งมอบซอฟท์แวร์ที่มีคุณค่าต่อลูกค้า ตั้งแต่ต้นอย่างต่อเนื่อง" (<a title="Agile Manifesto Principles" href="http://agilemanifesto.org/iso/th/principles.html">หลักการเบื้องหลังคำแถลงอุดมการณ์แห่งอไจล์ #1</a>) เท่านั้นเอง</p>
+<h3><strong>สรุป</strong></h3>
+<p>ถ้า <a href="http://varokas.wordpress.com/2013/05/20/there-is-no-agile/">Agile ไม่มีอยู่จริง</a> แล้้ว "Waterfall" ที่พูดกันก็ไม่มีอยู่จริงด้วยครับ</p>
+<p>ถ้าคิดง่ายๆ ลองมองมันเป็นสองขั้วที่อยู่คนละข้างกัน ก็ได้</p>
+<ul>
+<li>เวลาคนทั่วไปเรียกตัวเองว่า <strong>Agile</strong> คือการบอกว่าเค้าอยู่ใกล้ฝั่งที่ดันจาก Req จนถึง Deploy โดยใช้เวลาน้อยๆ (เดือน วัน หรือ ชม) มากกว่า</li>
+<li>เวลาคนทั่วไปเรียกตัวเองว่า <strong>Waterfall</strong> คือการบอกว่าเค้าอยู่ใกล้ฝั่งที่ดันจาก Req จนถึง Deploy โดยใช้เวลามากๆ (ไตรมาส ปี หรือ หลายๆ ปี) มากกว่า</li>
+</ul>
+<p>ไม่ได้เกี่ยวอะไรกับลำดับการทำงานอะไรก่อนหลัง</p>
+<p>แล้ววันนี้คุณอยู่ใกล้ฝั่งไหนมากกว่ากัน?</p>
